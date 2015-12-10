@@ -21,24 +21,39 @@ class user : public ofThread
 	public:
 					user									();
 		virtual		~user									();
-
+ 
 					void 				setId				(string id_){m_id = id_;}
 					string				getId				(){return m_id;}
+					void				setTemplate			(bool is=true){m_bTemplate = is;}
+					bool				getTemplate			(){return m_bTemplate;}
 					void				setModManager		(apparelModManager* p){mp_modManager=p;}
 					apparelModManager*	getModManager		(){return mp_modManager;}
 					string				getPathRelative		(string filename="");
+					string				getPathRelativeForUserId(string userId,string filename="");
 					string				getPathDocument		(string filename="");
+					string				getPathDocumentForUserId(string userId,string filename="");
 					string				getPathResources	(string filename="");
+					string				getPathResourcesForUserId	(string userId, string filename="");
+ 
 					ofxXmlSettings&		getConfiguration	(){return m_configuration;}
 					void				loadServicesData	();
 					void				saveServicesData	();
+					bool				areServicesSetup	();
+
 					void				useThread			(bool is=true){m_bUseThread=is;}
  					void				useTick				(bool is=true){m_bUseTick = is;}		// should be called before loadconfiguration
 	
-	
+					void				deconnect			();
+					void				connect				();
+					bool				isConnected			(){return m_bConnected;}
+ 
 					void				createDirectory		();
+					void				createDocumentDirectory();
+					void				createFileDataSql	();
 
-					vector<userSocialInterface*>&	getListServices(){return m_listSocialInterfaces;}
+					vector<userSocialInterface*>&	getListServices		(){return m_listSocialInterfaces;}
+					userSocialInterface*			getService			(string id);
+ 
 
 
 		virtual		void				loadConfiguration	();
@@ -55,12 +70,23 @@ class user : public ofThread
 					void				onNewWords			(vector<string>& words);
 	
 	protected:
+		// zeroAll
+		void							zeroAll				();
+
+		// Id
 		string							m_id;
 
-		// Thread params
-		bool							m_bUseThread;		// some services may use their own thread (ex : Fabric / Twitter)
- 
+		// Template
+		bool							m_bTemplate;
 
+		// Connected
+		bool							m_bConnected;
+
+		// Thread params
+		bool							m_bUseThread;		// some services may use their own thread (ex : Fabric / Twitter), used to call service->doWork()
+
+
+ 
 		// Ticker to reload data
 		ofxTicker						m_ticker;
 		float							m_periodTick;
@@ -78,7 +104,7 @@ class user : public ofThread
 	
 		// Temp
 		ofxSQLite*						mp_sqlData;
-	
+ 
 
 };
 

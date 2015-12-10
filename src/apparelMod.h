@@ -16,12 +16,14 @@
 class apparelMod
 {
 	public:
-		apparelMod			(string id);
+		apparelMod			(string id, int id2=0);
 		virtual ~apparelMod	(){}
 	
+				void		setId				(int id){m_id2 = id;}
 	
 				void		createDirMod		();
 
+		virtual	void		createParameters	();
 		virtual	void		loadParameters		();
 		virtual	void		loadParametersCustom(){};
 		virtual	void		saveParameters		();
@@ -45,6 +47,7 @@ class apparelMod
 		virtual void		parameterChanged		(ofAbstractParameter & parameter);
 		virtual	void		onParameterChanged		(ofAbstractParameter & parameter){}
 		virtual	void		onWeightChanged			(){}
+		void				setForceWeightAutomatic	(bool is=true){m_bForceWeightAutomatic = is;}
 
 		string				getPathRelative			(string filename="");
 		string				getPathToolMods			(string filename){return "tools/mods/"+filename;}
@@ -71,6 +74,10 @@ class apparelMod
 		int					m_flagChanged;
 
 
+		// MOOD
+		bool				m_isMood;
+		bool				isMood					(){return m_isMood;}
+
 		// DRAWING
 		virtual void		draw					(){};
 		virtual void		drawExtra				(){};
@@ -80,7 +87,7 @@ class apparelMod
 		// OSC NETWORK
 		void				setOscSender			(oscSenderInterface* p){mp_oscSender=p;}
 
-		// INTERFACE FOR RECEIVING DATA FROM USER : !!Asynchronous!!
+		// INTERFACE FOR RECEIVING DATA FROM USER : !!can be asynchronous!!
 		void				onNewText				(user* pUser, string text){}
 		void				onNewWords				(user* pUser, vector<string>& words);
 
@@ -89,6 +96,8 @@ class apparelMod
 		// ID
 		string				m_id;
 		string				getId					(){return m_id;}
+ 
+		int					m_id2;
 
 		// MODEL w/ DATA
 		apparelModel		m_model;
@@ -113,6 +122,8 @@ class apparelMod
 		ofParameter<bool>	m_isWeightManual;
 		ofParameter<int>	m_nbWordsMax;
 
+	    bool				m_bForceWeightAutomatic; // if true, overwrites m_isWeightManual when loadParameters is called
+
 		float				m_weight;
 		void				setWeight					(float v);
 
@@ -126,6 +137,7 @@ class apparelMod
 		// WORDS
 		vector<string>		m_words;
 		int					m_countWords; // total words from list retrieved in database
+ 
 		bool				isInWordsList				(string word);
 		void				countUserWords				(user* pUser, bool lock=false);
 		void				updateUserDatabase			(user* pUser, string word, bool lock=false);

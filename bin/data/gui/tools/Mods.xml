@@ -1,22 +1,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>show vertex normals</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>show vertex indices</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>show face normals</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>show face indices</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -31,7 +31,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>mixed</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -46,7 +46,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Distance</Name>
-    <Value>79.199996948</Value>
+    <Value>76.400001526</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -65,8 +65,18 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Pretentiopathy</Name>
+    <Name>Selfopathy</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Zoopathy</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Pretentiopathy</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -75,12 +85,7 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>zoopathy</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Porcupinopathy</Name>
+    <Name>Kawaiopathy</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -90,7 +95,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Kawaiopathy</Name>
+    <Name>Porcupinopathy</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Sad</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
